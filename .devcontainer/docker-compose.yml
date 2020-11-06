@@ -1,0 +1,43 @@
+version: '3'
+services:
+  postgres:
+    container_name: wsl_example_postgres
+    user: $UID:$GID
+    build: ./docker/postgres/
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: tekitou-na-password
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data
+  nodealpine:
+    container_name: wsl_example_nodealpine
+    build:
+      context: ./docker/nodealpine/
+      args:
+        UID: $UID
+        GID: $GID
+    tty: true
+    volumes:
+      - ..:/workspace
+  alpine:
+    container_name: wsl_example_alpine
+    build:
+      context: ./docker/alpine/
+      args:
+        USERNAME: $USERNAME
+        UID: $UID
+        GID: $GID
+    tty: true
+    volumes:
+      - ..:/workspace
+  alpinewithuser:
+    container_name: wsl_example_alpinewithuser
+    build:
+      context: ./docker/alpinewithuser/
+      args:
+        UID: $UID
+        GID: $GID
+    tty: true
+    volumes:
+      - ..:/workspace

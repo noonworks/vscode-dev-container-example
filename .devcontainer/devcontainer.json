@@ -1,0 +1,20 @@
+{
+  "name": "wsl-devcontainer-example",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/workspace",
+  //
+  // alpine
+  // "service": "alpine",
+  //
+  // node-alpine
+  "service": "nodealpine",
+  "remoteUser": "node",
+  //
+  // alpine with testuser
+  // "service": "alpinewithuser",
+  // "remoteUser": "testuser",
+  //
+  "initializeCommand": "${localWorkspaceFolder}/.devcontainer/init.sh",
+  "settings": {},
+  "extensions": []
+}
